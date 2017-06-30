@@ -1,0 +1,11 @@
+[user]
+        name = Peter Wise
+        email = peter@bloodaxe.com
+[core]
+        editor = vim
+[color]
+        diff = auto
+        interactive = auto
+        branch = auto
+        status = auto
+
