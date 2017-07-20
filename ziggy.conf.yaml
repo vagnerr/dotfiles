@@ -6,8 +6,4 @@
 - clean: [ '~' ]
 
 - link:
-   ~/.gitconfig:
-   ~/.irssi:
-   ~/.screenrc:
-   ~/.vimrc:
-   ~/.vim:
+   ~/.forward:

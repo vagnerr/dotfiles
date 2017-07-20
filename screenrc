@@ -1,0 +1,16 @@
+defscrollback 1000
+
+vbell off
+
+# http://www4.informatik.uni-erlangen.de/~jnweiger/screen-faq.html
+# this line should make the xterm scrollbar work again
+termcapinfo xterm ti@:te@
+
+log on
+#logfile screentestinglog.%n
+logfile flush 1
+hardstatus      on
+hardstatus      alwayslastline
+hardstatus      string  "%{.bW} %-w%{.rW}%n %t%{-}%+w %=%{.bY} %Y-%m-%d %C"
+#hardstatus      string  "%{.bW} %-w%{.rW}%n %t%{-}%+w %=%{.bY} %Y-%m-%d %C:%s"
+
