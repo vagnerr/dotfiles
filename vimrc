@@ -1,10 +1,3 @@
-"
-" $RCSfile: .vimrc,v $
-" $Revision: 1.6 $
-" $Date: 2009-08-06 09:11:12 $
-"
-" Please keep this in sync : etc/skel/.vimrc and sshkeys/allusers/.vimrc
-"
 set nocompatible
 set showmatch
 set tabstop=2

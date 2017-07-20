@@ -1,5 +1,4 @@
 servers = (
-  #{ address = "irc.hq.pirum.com"; chatnet = "chat"; port = "6667"; },
   { address = "irc.jump.org.uk"; chatnet = "talker"; port = "6667"; },
   { 
     address = "irc.slashnet.org";
