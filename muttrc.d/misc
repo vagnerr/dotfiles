@@ -1,0 +1,34 @@
+#CVS: $Id: misc,v 1.2 2005/12/28 04:18:36 peter Exp $
+###
+# Mutt: misc commands
+###
+
+### display Umlauts correctly
+charset-hook . iso-8859-1
+
+### how to treat multipart
+alternative_order text/plain text/* application/*
+auto_view text/html
+
+### notification list for folders
+## (moved to local)
+
+
+### spamfight
+macro index Ss '<limit>~b "pen.s|v..gr|p.rn|sex|d.pl.m|erect..n|c..l.s"<enter>'
+macro index Sm '<limit>~b "l.ttery|m.rtg?.ge|pr.ce|p.y.ng|f.n.nce|d.ll.r|nsur.nce|\\$[[:digit:]]+"<enter>'
+macro index Sd '<limit>~b "med.c.t..n|d.sc.unt|p.ll[sz]|v.l.um|prescr.pt..n|v.c.d.n"<enter>'
+
+macro index Sb '<limit>~h base64<enter>'
+macro index Si '<limit>~b "<img"<enter>'
+macro index Sl '<limit>~b "<a "<enter>'
+macro index Sh '<limit>~b "<html|<body"<enter>'
+macro index Sw '<limit>~b "watch"<enter>'
+
+macro index Sg '<limit>~C "@(web|gmx).de" | ~h "((sf|sourceforge).net|(ghb|informatik.uni)-hamburg.de)"<enter>'
+
+###
+# EOF
+###
+
+

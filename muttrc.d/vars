@@ -1,0 +1,248 @@
+#CVS: $Id: vars,v 1.3 2005/12/29 00:08:13 peter Exp $
+###
+# Mutt: vars
+###
+
+### system
+#set dotlock_program="/opt/bin/mutt_dotlock"
+
+#20151121 disabled dsn, casues exim to fail with remote host is localhost error
+#set dsn_notify='failure,success'
+#set dsn_return=hdrs
+
+#local - set editor=
+# set mailcap_path=...
+set mail_check=166
+# set sendmail=...path to sendmail with opts.
+#local - set sendmail=
+set sendmail_wait=0
+#set shell=/bin/ksh
+set shell=/bin/bash
+set timeout=666
+#local - set tmpdir=
+
+### headers
+set bounce_delivered=yes
+set edit_hdrs=yes
+set envelope_from=yes
+set followup_to=yes
+set forward_format="Fwd: %s"
+# set gecos_mask='^[^,]*'
+set hdrs=yes
+set hidden_host=yes
+# local - set hostname=
+set realname='Peter Wise'
+set reply_regexp="^(((re|wg|aw|antwort|betreff|fw|\\[?fwd):[\t ]*)|[([]fwd[])][\t ]*)+"
+set reverse_name=no
+set reverse_realname=no
+set use_domain=yes
+set use_from=no
+set user_agent=yes
+
+### message
+set attribution="[=-  %f  -=]\n[=-  wrote on %d  -=]\n"
+set forward_quote=yes
+set header=no
+set indent_string='> '
+set post_indent_string=""
+set sig_dashes=no
+#local - set signature=
+
+### folders
+set confirmappend=no
+set confirmcreate=yes
+set copy=yes
+set delete=yes
+set force_name=no
+set keep_flagged=no
+set maildir_trash=no
+set mask='!^\.$'
+set mh_purge=yes
+set move=yes
+set read_only=no
+set save_address=no
+set save_empty=yes
+set save_name=no
+set write_bcc=yes
+
+### compose
+set abort_nosubject=ask-yes
+set abort_unmodified=ask-yes
+set askbcc=no
+set askcc=no
+set autoedit=no
+#O#set bounce=ask-yes
+set fast_reply=yes
+#O#set forward_edit=yes
+set honor_followup_to=yes
+set include=ask-yes
+set ignore_list_reply_to=yes
+set postpone=ask-yes
+set recall=ask-yes
+set reply_self=no
+set reply_to=ask-yes
+
+### attachments
+set attach_split=yes
+set attach_sep="\n"
+set fcc_attach=no
+set forward_decode=yes
+set mime_forward=no
+set mime_forward_decode=yes
+set mime_forward_rest=no
+set pipe_decode=yes
+set thorough_search=no
+
+### crypt general
+# set crypt_autoencrypt=no
+# set crypt_autosign=no
+# set crypt_replyencrypt=yes
+# set crypt_replysign=yes
+# set crypt_replysignencrypted=yes
+# set crypt_timestamp=yes
+# set crypt_verify_sig=yes
+
+set fcc_clear=no
+set forward_decrypt=yes
+#O#set smime_is_default=no
+
+### pgp
+
+set pgp_autoencrypt=no
+set pgp_autosign=no
+set pgp_replyencrypt=yes
+set pgp_replysign=yes
+set pgp_replysignencrypted=yes
+set pgp_verify_sig=yes
+
+### s/mime
+
+### remote connect
+set connect_timeout=30
+set preconnect=""
+set tunnel=""
+
+###20151118 kill imap vars this mutt does not recognise
+### imap
+#set imap_authenticators="SASL:GSSAPI:CRAM-MD5:LOGIN"
+#set imap_delim_chars="/."
+##set imap_force_ssl=no
+#set imap_home_namespace=""
+#set imap_keepalive=900
+#set imap_list_subscribed=no
+#set imap_passive=yes
+#set imap_peek=yes
+#set imap_servernoise=yes
+
+###20151121 kill to see if it fixes bad emails being generated
+### pop
+#set pop_authenticators="user"
+#set pop_auth_try_all=yes
+#set pop_checkinterval=166
+#set pop_delete=no
+#set pop_last=yes
+#set pop_reconnect=ask-yes
+
+### default
+unset pop_pass pop_user imap_pass imap_user
+
+#### ssl
+#set certificate_file="~/.muttrc.d/certs"
+## set entropy_file=""
+#set ssl_starttls=yes
+##set ssl_use_sslv2=yes  #2015118 unknown var
+#set ssl_use_sslv3=yes
+#set ssl_use_tlsv1=yes
+##set ssl_usesystemcerts=yes  #2015118 unknown var
+
+### display-index
+set arrow_cursor=no
+set ascii_chars=yes
+set beep_new=yes
+set mark_old=no
+set read_inc=6
+set reverse_alias=yes
+set score=no
+set sleep_time=0
+set sort='date-received'
+set sort_alias='alias'
+set sort_browser='alpha'
+set status_chars=' mRA'
+set status_on_top=yes
+set to_chars='L tc.l'
+set write_inc=1
+
+### threads
+set collapse_unread=yes
+set digest_collapse=no
+set duplicate_threads=yes
+#O#set hide_limited=no
+set hide_missing=no
+#O#set hide_top_limited=no
+#O#set hide_top_missing=no
+#O#set narrow_tree=no
+set sort_aux='date-received'
+set sort_re=no
+set strict_threads=no
+set thread_received=yes
+set uncollapse_jump=no
+
+### display-pager
+set charset="iso-8859-1"
+set implicit_autoview=no
+set locale='C'
+set markers=yes
+set menu_scroll=no
+set pager=builtin
+set pager_context=1
+set pager_index_lines=9
+set pager_stop=yes
+set prompt_after=no
+set quote_regexp="^([\t ]*[]/>|}:#])+"
+set smart_wrap=yes
+set smileys="^>From "
+set tilde=yes
+set weed=yes
+set wrap_search=yes
+set wrapmargin=0
+
+### key-commands
+set auto_tag=yes
+set delete_untag=yes
+set escape='~'
+set quit=yes
+set resolve=yes
+set suspend=yes
+set wait_key=yes
+
+### encoding
+set allow_8bit=yes
+set allow_ansi=no
+set encode_from=no
+set use_8bitmime=no
+
+### misc.
+
+set beep=yes
+set check_new=yes
+set help=no
+set history=66
+set ispell=no
+set mailcap_sanitize=yes
+set meta_key=no
+set metoo=no
+set pipe_sep="\n"
+set pipe_split=yes
+set print=no
+set print_command=""
+set print_split=no
+set query_command=""
+set rfc2047_parameters=yes
+set simple_search="~h %s"
+set text_flowed=no
+set visual="exec x mi"
+
+###
+# EOF
+###
+

@@ -1,0 +1,61 @@
+#CVS: $Id: local.desk02,v 1.3 2006/07/11 10:00:52 peter Exp $
+
+# Local settings for desk02.is.bbc.co.uk
+
+#--------------
+#was in display
+#--------------
+## "alternates" tells mutt about your addresses.  Mutt thus can show mails
+## addresses to you in the folder index as "personal" using the flag '+'.
+#alternates ((peter|pete)@bloodaxe.com|.*@*vagnerr.*|*@wopr.demon.co.uk|vagnerr@gmail.com|peterw@is.bbc.co.uk|peter.wise.01@bbc.co.uk|peter.wise@siemens.com)
+
+#-------------
+#was in folder
+#-------------
+folder-hook . '\
+	my_hdr From: Peter Wise <peterw@is.bbc.co.uk> \
+	'
+
+#-----------
+#was in misc
+#-----------
+### notification list for folders
+mailboxes ! =inbox =sent-mail =p =saved-messages =stats =tickets =timesheet
+#mailboxes `for file in ~/mail/lists/*; do echo -n "+lists/$(basename $file) "; done`
+
+## "lists" adds a list of mailing lists addresses
+## so mutt knows about these for showing them in the folder indes
+## and to allow replying to them with the command "list-reply".
+## The first part of the address (up to the @) should be used here.
+#unlists *      # remove old entries first
+#lists `cd ~/mail/lists && echo *`
+
+#unsubscribe * 
+#subscribe `cd ~/mail/lists && echo *`
+
+
+#macro index SSS <pipe-message>"/usr/local/bin/dspam --user peter --class=spam --source=error"<enter>d<enter>
+#macro pager SSS <pipe-message>"/usr/local/bin/dspam --user peter --class=spam --source=error"<enter>d<enter>
+
+#-----------
+#from muttrc
+#-----------
+
+### important sys vars
+set folder=$HOME/mail
+#mbox-hook ! +inbox
+
+set mbox_type=mbox
+set mbox='+inbox'
+set record='+sent-mail'
+set postponed='+p'
+
+#---------
+#from vars
+#---------
+set editor="vim '+:8' '+set wrapmargin=10'"
+#set sendmail="/usr/lib/sendmail"
+set tmpdir="/var/tmp"
+set hostname="desk02.is.bbc.co.uk"
+set signature=$HOME/.signature
+

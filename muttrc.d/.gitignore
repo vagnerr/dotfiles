@@ -1,0 +1,3 @@
+# 'local' is symlinked to local.<hostname> in install
+# so it is tailored to the install host 
+local

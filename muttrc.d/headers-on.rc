@@ -1,0 +1,13 @@
+#CVS: $Id: headers-on.rc,v 1.2 2005/12/29 00:08:13 peter Exp $
+# Headers to ignore/see
+# Ignore nothing
+unignore *
+
+# ordering of headers in the pager
+unhdr_order *
+#hdr_order Date: From: To: Cc: X-Newsreader: X-Mailer: Organization: Organisation: User-Agent: X-Fnord: X-WebTV-Stationery: X-Message-Flag: Newsgroups: Reply-To: X-Spam-Status: x-spam-rule: x-SpamProbe: Subject:
+
+macro pager H "<enter-command>source ~/.muttrc.d/headers-off.rc<enter><exit><display-message>"
+
+macro index SSR <enter-command>"unignore X-DSPAM-Signature"<enter>
+macro pager SSR <enter-command>"unignore X-DSPAM-Signature"<enter>

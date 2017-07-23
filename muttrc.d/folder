@@ -1,0 +1,74 @@
+#CVS: $Id: folder,v 1.5 2006/01/04 22:32:46 peter Exp $
+###
+# Mutt: dynamic behaviour, folder-hooks
+###
+
+### folder-hook: always the more generic first, the specials later
+### because more than one can apply, so to construct or replace
+
+### default
+	# my_hdr moved to local
+folder-hook . '\
+	set timeout=30 ;\
+	set save_empty=no ;\
+	set sort=date-received ;\
+	fcc-hook . < \
+	'
+
+# removed as it breaks my exim for some reason
+#	set dsn_notify="failure,success" ;\
+
+
+# remove empty folders except softlinks
+folder-hook +(junk|warn|spam)$ '\
+	set save_empty=yes ;\
+	set sort=threads ;\
+	set mbox_type=maildir \
+	'
+
+# make the lists folders maildir format (and threads)
+folder-hook +lists '\
+	set sort=threads ;\
+	set mbox_type=maildir \
+	'
+
+### sorting by time
+# sort by date
+folder-hook +(sf|s|r|me)$ '\
+	set sort=date-received \
+	'
+folder-hook '!' '\
+	set timeout=30 ;\
+	set sort=threads \
+	'
+
+### saving in/out in same
+# dnd-meta
+folder-hook +dnd '\
+	fcc-hook . +dnd \
+	'
+
+# rpg-play
+folder-hook +rpg '\
+	fcc-hook . +rpg \
+	'
+
+# pbem
+folder-hook +game '\
+	fcc-hook . +game \
+	'
+
+# ranger
+folder-hook +slym '\
+	fcc-hook . +slym \
+	'
+
+# erzi
+folder-hook +erzi '\
+	fcc-hook . +erzi \
+	'
+
+# SF
+folder-hook +(sf|trek) '\
+	fcc-hook . +sf \
+

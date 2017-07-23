@@ -1,0 +1,46 @@
+#CVS: $Id: muttrc,v 1.2 2005/12/28 04:18:36 peter Exp $
+###
+
+### important sys vars
+# (moved to local)
+
+### misc commands
+source ~/.muttrc.d/misc
+
+### set variables
+source ~/.muttrc.d/vars
+
+### display formats
+source ~/.muttrc.d/formats
+
+### alternate keymapping
+source ~/.muttrc.d/keymap
+
+### hiliting, color attributes
+source ~/.muttrc.d/display
+
+### handle PGP
+source ~/.muttrc.d/pgp
+
+### set and read alias file
+source ~/.muttrc.d/aliases
+set alias_file=~/.muttrc.d/aliases
+
+unhook *
+set default_hook="~f %s | ~C %s"
+
+### header adds by folder
+source ~/.muttrc.d/folder
+
+### alt. accounts
+#source ~/.muttrc.d/accounts
+
+### save to folder by header
+#source ~/.muttrc.d/save
+
+### Local settings for specific machine
+source ~/.muttrc.d/local
+
+###
+# EOF
+###

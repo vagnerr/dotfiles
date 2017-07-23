@@ -1,0 +1,22 @@
+#CVS: $Id: headers-off.rc,v 1.2 2005/12/29 00:08:13 peter Exp $
+# Headers to ignore/see
+# Ignore everything but the really important lines:
+ignore *
+unignore from: date subject to cc reply-to:
+unignore organization organisation
+unignore user-agent: x-agent: x-mailer: x-newsreader:
+unignore newsgroups: posted-to: x-spam-rule: X-Spam-Status: X-SpamProbe:
+# These can provide amusement
+unignore X-Fnord: X-WebTV-Stationery: X-Message-Flag:
+unignore X-DSPAM-Result: X-DSPAM-Confidence: 
+unignore X-Spam-Score: 
+unignore X-Spam-Report:
+
+# ordering of headers in the pager
+unhdr_order *
+hdr_order Date: From: To: Cc: X-Newsreader: X-Mailer: Organization: Organisation: User-Agent: X-Fnord: X-WebTV-Stationery: X-Message-Flag: Newsgroups: Reply-To: X-Spam-Status: x-spam-rule: x-SpamProbe: Subject:
+
+macro pager H "<enter-command>source ~/.muttrc.d/headers-on.rc<enter><exit><display-message>"
+
+macro index SSR <enter-command>"ignore X-DSPAM-Signature"<enter>
+macro pager SSR <enter-command>"ignore X-DSPAM-Signature"<enter>
