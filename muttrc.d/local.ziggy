@@ -7,7 +7,7 @@
 #--------------
 ## "alternates" tells mutt about your addresses.  Mutt thus can show mails
 ## addresses to you in the folder index as "personal" using the flag '+'.
-#alternates ((peter|pete)@bloodaxe.com|.*@*vagnerr.*|*@wopr.demon.co.uk|vagnerr@gmail.com|peterw@is.bbc.co.uk|peter.wise.01@bbc.co.uk|peter.wise@siemens.com)
+alternates ((peter|pete)@bloodaxe.com|.*@*vagnerr.*|vagnerr@gmail.com)
 
 #-------------
 #was in folder
@@ -21,7 +21,9 @@ folder-hook . '\
 #-----------
 ### notification list for folders
 mailboxes ! =inbox =loonies =sourceforge =s =p
-mailboxes `for file in ~/Mail/lists/*; do echo -n "+lists/$(basename $file) "; done`
+
+#20151118 broken currently, may be the fact that the list dirs need pulling from backup
+#mailboxes `for file in ~/Mail/lists/*; do echo -n "+lists/$(basename $file) "; done`
 
 ## "lists" adds a list of mailing lists addresses
 ## so mutt knows about these for showing them in the folder indes
@@ -36,7 +38,11 @@ subscribe `cd ~/Mail/lists && echo *`
 
 macro index SSS <pipe-message>"/usr/local/bin/dspam --user peter --class=spam --source=error"<enter>d<enter>
 macro pager SSS <pipe-message>"/usr/local/bin/dspam --user peter --class=spam --source=error"<enter>d<enter>
+macro index SC s=spam_corpus/<enter>
+macro pager SC s=spam_corpus/<enter>
 
+macro index SX s=no_spam_corpus/<enter>
+macro pager SX s=no_spam_corpus/<enter>
 #-----------
 #from muttrc
 #-----------
@@ -45,8 +51,13 @@ macro pager SSS <pipe-message>"/usr/local/bin/dspam --user peter --class=spam --
 set folder=$HOME/Mail
 #mbox-hook ! +inbox
 
-set mbox_type=MH
+# mbox_type options are MBOX=single file, MAILDIR=folder/cur|cur|tmp, MH=folder/1|2|...|n, MMDF=???
+# using MAILDIR, to match .procmailrc settings, and make it easier for future use of IMAP
+set mbox_type=MAILDIR
 set mbox='+inbox'
+# open the inbox by default (procmail automaticaly pushes from spool into inbox via .foward)
+# operwise it opens to /var/mail/peter instead which is now empty
+set spoolfile='+inbox'
 set record='+s'
 set postponed='+p'
 
@@ -54,8 +65,10 @@ set postponed='+p'
 #from vars
 #---------
 set editor="vim '+:8' '+set wrapmargin=10'"
-set sendmail="/usr/lib/ssmtp"
+#set sendmail="/usr/lib/ssmtp"
+set sendmail="/usr/sbin/sendmail"
 set tmpdir="/var/tmp"
 set hostname="ziggy.vagnerr.com"
-set signature=$MUTT/sig
+#set hostname="bloodaxe.com"
+set signature=~/.muttrc.d/sig
 
