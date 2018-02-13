@@ -10,6 +10,8 @@
   - [ ln -sf local.`hostname` muttrc.d/local  ]
 
 - link:
+   ~/.profile:
+   ~/.bashrc:
    ~/.gitconfig:
    ~/.irssi:
    ~/.screenrc:
