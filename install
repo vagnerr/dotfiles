@@ -3,7 +3,8 @@
 set -e
 
 DEFAULT_CONFIG_PREFIX="default"
-CONFIG_SUFFIX=".conf.yaml"
+CONFIG_SUFFIX=".conf"
+META_SUFFIX=".meta"
 DOTBOT_DIR="dotbot"
 
 DOTBOT_BIN="bin/dotbot"
@@ -12,6 +13,34 @@ BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 cd "${BASEDIR}"
 git submodule update --init --recursive "${DOTBOT_DIR}"
 
-for conf in ${DEFAULT_CONFIG_PREFIX} ${@}; do
+if [ "$1" != "" ]; then
+  echo "Manual config ${1} requested"
+  CBASE=$1
+else
+  echo "Using hostname.."
+  CBASE=`hostname`
+fi
+
+META_FILE="${CBASE}${META_SUFFIX}";
+echo "Meta file: ${META_FILE}";
+
+if [ ! -f $META_FILE ]; then
+  echo "   NOT FOUND! Reverting to default"
+  META_FILE="${DEFAULT_CONFIG_PREFIX}${META_SUFFIX}"
+  if [ ! -f $META_FILE ]; then
+    echo "DEFAULT META MISSING"
+    exit 1
+  fi
+fi
+
+for conf in `cat ${META_FILE} | egrep -v "(^#|^[\w]$)"`; do
+  configfile="${conf}${CONFIG_SUFFIX}"
+  echo "Running conf: ${configfile}"
+  if [ ! -f ${configfile} ]; then
+    echo "  CONFIG FILE MISSING! SKIPPING"
+  else
     "${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}" -c "${conf}${CONFIG_SUFFIX}"
+  fi
 done
+
+
