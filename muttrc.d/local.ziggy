@@ -43,6 +43,9 @@ macro pager SC s=spam_corpus/<enter>
 
 macro index SX s=no_spam_corpus/<enter>
 macro pager SX s=no_spam_corpus/<enter>
+
+macro index,pager SJ s=recruiter/<enter>
+macro index,pager AA s=archive_2018/<enter>
 #-----------
 #from muttrc
 #-----------
