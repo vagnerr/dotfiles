@@ -1,0 +1,44 @@
+#!/usr/bin/env python
+"""mutt format date
+
+Prints different index_format strings for mutt according to a
+messages age.
+
+The single command line argument should be a unix timestamp
+giving the message's date (%{}, etc. in Mutt).
+"""
+
+# Based on solution provided by user601 
+#  https://unix.stackexchange.com/questions/103936/mutt-conditional-date-format-in-index-format
+
+import sys
+from datetime import datetime
+
+#INDEX_FORMAT = "%Z {} %?X?(%X)&   ? %-22.22F  %.100s %> %5c%"
+INDEX_FORMAT = "%4C %Z {} %-17.17F : %s %"
+                                      
+def age_fmt(msg_date, now):
+    timed = (now - msg_date)
+    # use iso date for messages of the previous year and before
+    if timed.days > 365:
+        return '%[%Y-%m-%d]'
+
+    # use "Month Day" for messages of this year
+    if timed.days > 7:
+        return '%10[%b %e]'
+
+    # use "Weekday Hour" for messages of last 7 days
+    if timed.days > 1:
+        return '%10[%a %l%P]'
+
+    # if a message appears to come from the future
+    if msg_date > now:
+        return '  b0rken'
+
+    # use only the time for messages that arrived today
+    return '%10[%H:%m]'
+
+if __name__ == '__main__':
+    msg_date = datetime.fromtimestamp(int(sys.argv[1]))
+    now = datetime.now()
+    print INDEX_FORMAT.format(age_fmt(msg_date, now))
