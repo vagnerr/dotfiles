@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 """mutt format date
 
 Prints different index_format strings for mutt according to a

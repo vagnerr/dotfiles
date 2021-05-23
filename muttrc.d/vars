@@ -190,7 +190,7 @@ set uncollapse_jump=no
 ### display-pager
 set charset="iso-8859-1"
 set implicit_autoview=no
-set locale='C'
+#set locale='C'
 set markers=yes
 set menu_scroll=no
 set pager=builtin

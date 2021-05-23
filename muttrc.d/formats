@@ -13,7 +13,7 @@ set message_format="From: <%a>, Sub: %s"
 #set index_format="%Z %2C %.13d (%-$FCOL.${FCOL}F) %-$SCOL.${SCOL}s (%c/%l"
 #set index_format="%4C %Z %[!%d/%m] %-17.17F (%3l) %s"
 # Slightly smarter date formats . wanted to use ~ but that didn't work for some reason
-set index_format="$HOME/.muttrc.d/mutt-fmt-date %[%s] |"
+#set index_format="$HOME/.muttrc.d/mutt-fmt-date %[%s] |"
 set pager_format="%Z %C/%m %d (%F) %s (%c/%l) %|-"
 set pgp_entry_format="%3n %t%f %4l/0x%k %-4a %2c %u %[%a %e.%h'%y at %k:%M:%S %Z]"
 
